@@ -2,9 +2,11 @@ import {expect, test} from "@playwright/test";
 import {Column, Task} from "./models/board.models";
 import {getColumns, loginToApp, navigateToMobileApplication, navigateToWebApplication} from "./helpers/board.helpers";
 
-test('Test case 1 - Verify "Implement user authentication" is in the "To Do" column', async ({ page }) => {
+test.beforeEach(async ({page}) =>  {
     await loginToApp(page);
+});
 
+test('Test case 1 - Verify "Implement user authentication" is in the "To Do" column', async ({ page }) => {
     await navigateToWebApplication(page);
 
     const columns: Column[]  = await getColumns(page);
@@ -18,8 +20,6 @@ test('Test case 1 - Verify "Implement user authentication" is in the "To Do" col
 });
 
 test('Test Case 2 - Verify "Fix navigation bug" is in the "To Do" column', async ({ page }) => {
-    await loginToApp(page);
-
     await navigateToWebApplication(page);
 
     const columns: Column[]  = await getColumns(page);
@@ -33,8 +33,6 @@ test('Test Case 2 - Verify "Fix navigation bug" is in the "To Do" column', async
 });
 
 test('Test Case 3 - Verify "Design system updates" is in the "In Progress" column', async ({ page }) => {
-    await loginToApp(page);
-
     await navigateToWebApplication(page);
 
     const columns: Column[]  = await getColumns(page);
@@ -48,8 +46,6 @@ test('Test Case 3 - Verify "Design system updates" is in the "In Progress" colum
 });
 
 test('Test Case 4 - Verify "Push notification system" is in the "To Do" column', async ({ page }) => {
-    await loginToApp(page);
-
     await navigateToMobileApplication(page);
 
     const columns: Column[]  = await getColumns(page);
@@ -62,8 +58,6 @@ test('Test Case 4 - Verify "Push notification system" is in the "To Do" column',
 });
 
 test('Test Case 5 - Verify "Offline mode" is in the "In Progress" column', async ({ page }) => {
-    await loginToApp(page);
-
     await navigateToMobileApplication(page);
 
     const columns: Column[]  = await getColumns(page);
@@ -77,8 +71,6 @@ test('Test Case 5 - Verify "Offline mode" is in the "In Progress" column', async
 });
 
 test('Test Case 6 - Verify "App icon design" is in the "Done" column', async ({ page }) => {
-    await loginToApp(page);
-
     await navigateToMobileApplication(page);
 
     const columns: Column[]  = await getColumns(page);
